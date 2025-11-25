@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Corazón que late</title>
+  <style>
+    body {
+      margin: 0;
+      background: #111827;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .container {
+      position: relative;
+      width: 320px;
+      height: 320px;
+    }
+
+    /* Corazón grande */
+    .heart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 180px;
+      height: 180px;
+      background: #FF1744;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      animation: beat 1s infinite;
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      background: #FF1744;
+      border-radius: 50%;
+    }
+    .heart::before {
+      top: -90px;
+      left: 0;
+    }
+    .heart::after {
+      left: 90px;
+      top: 0;
+    }
+
+    /* Texto dentro del corazón */
+    .text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 28px;   /* letras más grandes */
+      font-weight: bold;
+      text-align: center;
+      line-height: 1.3;
+      z-index: 10; /* siempre encima */
+    }
+
+    /* Corazones pequeños alrededor */
+    .small-heart {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: #FF79B0;
+      transform: rotate(-45deg);
+      animation: beat-small 1s infinite;
+    }
+    .small-heart::before,
+    .small-heart::after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: #FF79B0;
+      border-radius: 50%;
+    }
+    .small-heart::before {
+      top: -25px;
+      left: 0;
+    }
+    .small-heart::after {
+      left: 25px;
+      top: 0;
+    }
+
+    /* Animaciones */
+    @keyframes beat {
+      0%, 100% { transform: translate(-50%, -50%) rotate(-45deg) scale(1); }
+      50% { transform: translate(-50%, -50%) rotate(-45deg) scale(1.2); }
+    }
+    @keyframes beat-small {
+      0%, 100% { transform: rotate(-45deg) scale(1); }
+      50% { transform: rotate(-45deg) scale(1.3); }
+    }
+
+    /* Responsivo para celular */
+    @media (max-width: 600px) {
+      .container {
+        width: 280px;
+        height: 280px;
+      }
+      .heart {
+        width: 160px;
+        height: 160px;
+      }
+      .heart::before,
+      .heart::after {
+        width: 160px;
+        height: 160px;
+      }
+      .heart::before { top: -80px; }
+      .heart::after { left: 80px; }
+      .text {
+        font-size: 26px; /* letras grandes también en móvil */
+      }
+      .small-heart {
+        width: 45px;
+        height: 45px;
+      }
+      .small-heart::before,
+      .small-heart::after {
+        width: 45px;
+        height: 45px;
+      }
+      .small-heart::before { top: -22px; }
+      .small-heart::after { left: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="heart"></div>
+    <div class="text">Te amo<br>Nati mi amor</div>
+
+    <!-- Corazones pequeños alrededor -->
+    <div class="small-heart" style="top:10px; left:50%; transform:translateX(-50%) rotate(-45deg);"></div>
+    <div class="small-heart" style="bottom:10px; left:50%; transform:translateX(-50%) rotate(-45deg);"></div>
+    <div class="small-heart" style="left:10px; top:50%; transform:translateY(-50%) rotate(-45deg);"></div>
+    <div class="small-heart" style="right:10px; top:50%; transform:translateY(-50%) rotate(-45deg);"></div>
+    <div class="small-heart" style="top:30px; left:30px;"></div>
+    <div class="small-heart" style="top:30px; right:30px;"></div>
+    <div class="small-heart" style="bottom:30px; left:30px;"></div>
+    <div class="small-heart" style="bottom:30px; right:30px;"></div>
+  </div>
+</body>
+</html>
